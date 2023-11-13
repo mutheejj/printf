@@ -1,11 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "main.h"
-#include <string.h>
-#include <stdarg.h>
+/**
+ * _printf - is a function
+ * @format: is a format
+ * Return: number
+ */
 int _printf(const char *format, ...)
 {
 	int i = 0;
+
 	va_list args;
 	if (format == NULL)
 	{
@@ -14,8 +16,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	while (*format)
 	{
-		if (*format != '%')
-		{
+		if (*format != '%'){
 			_putchar(*format);
 			i++;
 		}
@@ -25,6 +26,7 @@ int _printf(const char *format, ...)
 			if (*format == 'r')
 			{
 				int r = va_arg(args, int);
+
 				_putchar(r);
 				i++;
 			}
@@ -32,12 +34,14 @@ int _printf(const char *format, ...)
 			{
 			case 'c':{
 				int c = va_arg(args, int);
+
 				_putchar(c);
 				i++;
 				break;
 				 }
 			case 's':{
 				char *s = va_arg(args, char*);
+
 				int length = 0;
 				while (s[length] != '\0')
 				{
