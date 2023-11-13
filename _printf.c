@@ -5,41 +5,50 @@
 #include <stdarg.h>
 int _printf(const char *format, ...)
 {
-	char ptr[1024];
 	int i = 0;
 	va_list args;
-	va_start(args, format);
-	
-	if (*format == '\0')
+	if (format == NULL)
 	{
-		return (0);
+		return (-1);
 	}
-	while (*format != '\0')
+	va_start(args, format);
+	while (*format)
 	{
-		if (*format == '%')
+		if (*format != '%')
 		{
-			ptr[i++] = *format;
-			format++;
-			switch (*format)
-			{
-			case 'c':
-				ptr[i++] = (char)va_arg(args, int);
-				break;
-			case 's':
-				ptr[i++] = (char)va_arg(args, int);
-				break;
-			default:
-				ptr[i++] = (char)va_arg(args, int);
-				break;
-		}
+			_putchar(*format);
+			i++;
 		}
 		else
 		{
-			ptr[i++] = *format;
+			format++;
+			switch (*format)
+			{
+			case 'c':{
+				int c = va_arg(args, int);
+				_putchar(c);
+				i++;
+				break;
+				 }
+			case 's':{
+				char *s = va_arg(args, char*);
+				int length = 0;
+				while (s[length] != '\0')
+				{
+					_putchar(s[length]);
+					length++;
+					i++;
+				}
+
+				i--;
+				break;
+				 }
+			default:
+				break;
+			}
 		}
 		format++;
 	}
 	va_end(args);
-	printf("%s", ptr);
-	return (0);
+	return (i);
 }
