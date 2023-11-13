@@ -7,31 +7,32 @@
 int _printf(const char *format, ...)
 {
 	int i = 0;
-
 	va_list args;
+
 	if (format == NULL)
 	{
 		return (-1);
 	}
+
 	va_start(args, format);
+
 	while (*format)
 	{
-		if (*format != '%'){
+		if (*format != '%')
+		{
 			_putchar(*format);
 			i++;
 		}
 		else
 		{
 			format++;
-			if (*format == 'r')
-			{
+			switch (*format){
+			case 'r':{
 				int r = va_arg(args, int);
-
 				_putchar(r);
 				i++;
-			}
-			switch (*format)
-			{
+				break;
+				 }
 			case 'c':{
 				int c = va_arg(args, int);
 
