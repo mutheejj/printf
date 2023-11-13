@@ -55,6 +55,7 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
+	my_printf(format, args);
 	va_end(args);
 	return (i);
 }
