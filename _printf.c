@@ -22,6 +22,12 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
+			if (*format == 'r')
+			{
+				int r = va_arg(args, int);
+				_putchar(r);
+				i++;
+			}
 			switch (*format)
 			{
 			case 'c':{
@@ -39,10 +45,9 @@ int _printf(const char *format, ...)
 					length++;
 					i++;
 				}
-
-				i--;
-				break;
 				 }
+				 i--;
+				break;
 			default:
 				break;
 			}
