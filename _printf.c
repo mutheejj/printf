@@ -10,9 +10,7 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	if (format == NULL)
-	{
 		return (-1);
-	}
 
 	va_start(args, format);
 
@@ -23,8 +21,7 @@ int _printf(const char *format, ...)
 			_putchar(*format);
 			i++;
 		}
-		else
-		{
+		else {
 			format++;
 			switch (*format){
 			case 'r':{
@@ -34,7 +31,7 @@ int _printf(const char *format, ...)
 				break;
 				 }
 			case 'c':{
-				int c = va_arg(args, int);
+				char c = va_arg(args, int);
 
 				_putchar(c);
 				i++;
@@ -51,7 +48,6 @@ int _printf(const char *format, ...)
 					i++;
 				}
 				 }
-				 i--;
 				break;
 			default:
 				break;
