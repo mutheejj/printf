@@ -1,4 +1,5 @@
 #include "main.h"
+#include "while.h"
 /**
  * _printf - is a function
  * @format: is a format
@@ -10,55 +11,10 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	if (format == NULL)
-	{
 		return (-1);
-	}
 
 	va_start(args, format);
-
-	while (*format)
-	{
-		if (*format != '%')
-		{
-			_putchar(*format);
-			i++;
-		}
-		else
-		{
-			format++;
-			switch (*format){
-			case 'r':{
-				int r = va_arg(args, int);
-				_putchar(r);
-				i++;
-				break;
-				 }
-			case 'c':{
-				int c = va_arg(args, int);
-
-				_putchar(c);
-				i++;
-				break;
-				 }
-			case 's':{
-				char *s = va_arg(args, char*);
-
-				int length = 0;
-				while (s[length] != '\0')
-				{
-					_putchar(s[length]);
-					length++;
-					i++;
-				}
-				 }
-				 i--;
-				break;
-			default:
-				break;
-			}
-		}
-		format++;
-	}
+	my_printf(format, args);
 	va_end(args);
 	return (i);
 }
