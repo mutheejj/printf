@@ -21,21 +21,17 @@ while (*format)
 					 i++;
 					 break;
 				 }
-			case 'c':{
-					 char c = va_arg(args, int);
-					 _putchar(c);
+			case 'd':{
+					 int d = va_arg(args, int);
+					 _putchar(d);
 					 i++;
 					 break;
 				 }
-			case 's':{
-					 char *s = va_arg(args, char*);
-					  int length = 0;
-					  while (s[length] != '\0')
-					  {
-						  _putchar(s[length]);
-						  length++;
-						  i++;
-					  }
+			case 'i':{
+					 int i = va_arg(args, int);
+					  _putchar(i);
+					  i++;
+					  break;
 				 }
 			default:
 				 break;
