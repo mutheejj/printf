@@ -5,6 +5,8 @@
 #include <stdarg.h>
 int _printf(const char *format, ...)
 {
+	char ptr[1024];
+	int i = 0;
 	va_list args;
 	va_start(args, format);
 	
@@ -16,23 +18,28 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
+			ptr[i++] = *format;
 			format++;
 			switch (*format)
 			{
 			case 'c':
-				printf("%c", va_arg(args, int));
+				ptr[i++] = (char)va_arg(args, int);
 				break;
 			case 's':
-				printf("%s", va_arg(args, char *));
+				ptr[i++] = (char)va_arg(args, int);
 				break;
-			case '%':
-				printf("%%");
 			default:
+				ptr[i++] = (char)va_arg(args, int);
 				break;
 		}
+		}
+		else
+		{
+			ptr[i++] = *format;
 		}
 		format++;
 	}
 	va_end(args);
+	printf("%s", ptr);
 	return (0);
 }
