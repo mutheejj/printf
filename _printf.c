@@ -4,6 +4,7 @@
  * @format: is a format
  * Return: number
  */
+
 int _printf(const char *format, ...)
 {
 	int i = 0;
@@ -50,6 +51,7 @@ int _printf(const char *format, ...)
 				 }
 				break;
 			default:
+				return (-1);
 				break;
 			}
 		}
