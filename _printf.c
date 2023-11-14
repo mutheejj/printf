@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 
 	while (*format != '\0')
 	{
-		if (*format == '%')
+		if (*format != '%')
 		{
 			_putchar(*format);
 			i++;
@@ -59,10 +59,6 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
-<<<<<<< HEAD
-	my_printf(format, args);
-=======
->>>>>>> ae558d372126ec2f2e45391a35223f5af943db29
 	va_end(args);
 	return (i);
 }
