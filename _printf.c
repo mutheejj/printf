@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 		else {
 			format++;
 			switch (*format){
-			case 'r':{
+			case 'r': {
 				int r = va_arg(args, int);
 				_putchar(r);
 				i++;
@@ -58,6 +58,7 @@ int _printf(const char *format, ...)
 		format++;
 	}
 	my_printf(format, args);
+	_printf(format, args);
 	va_end(args);
 	return (i);
 }
