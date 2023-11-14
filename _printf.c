@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 		}
 		else {
 			format++;
-			switch (*format){
+			switch (*format){	
 			case 'r': {
 				int r = va_arg(args, int);
 				_putchar(r);
@@ -48,16 +48,21 @@ int _printf(const char *format, ...)
 					length++;
 					i++;
 				}
-				 }
 				break;
+				 }
+				 
 			default:
-				return (-1);
+				 _putchar(*format);
+				i++;
 				break;
 			}
 		}
 		format++;
 	}
+<<<<<<< HEAD
 	my_printf(format, args);
+=======
+>>>>>>> ae558d372126ec2f2e45391a35223f5af943db29
 	va_end(args);
 	return (i);
 }
