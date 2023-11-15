@@ -1,16 +1,25 @@
 #include "main.h"
 /**
- * _printf - is a function
- * @format: is a format
- * Return: number
+ * print_char - prints char
+ * @args: list
+ * @i: a number
+ * Return: i
  */
+
 int print_char(va_list args, int i)
 {
 	char c = va_arg(args, int);
+
 	_putchar(c);
 	return (i + 1);
 }
 
+/**
+ * print_str - a function
+ * @args: a list
+ * @i: int
+ * Return: i
+ */
 
 int print_str(va_list args, int i)
 {
@@ -25,6 +34,13 @@ int print_str(va_list args, int i)
 	}
 	return (i);
 }
+
+/**
+ * print_int - function
+ * @args: list
+ * @i: int
+ * Return: i
+ */
 
 int print_int(va_list args, int i)
 {
@@ -46,7 +62,7 @@ int print_int(va_list args, int i)
 	}
 	temp = num;
 
-	while ( count > 0)
+	while (count > 0)
 	{
 		_putchar(temp / count + '0');
 		i++;
@@ -55,6 +71,12 @@ int print_int(va_list args, int i)
 	}
 	return (i);
 }
+
+/**
+ * _printf - prints
+ * @format: string
+ * Return: i
+ */
 
 int _printf(const char *format, ...)
 {
@@ -73,27 +95,23 @@ int _printf(const char *format, ...)
 			_putchar(*format);
 			i++;
 		}
-		else {
+		else
+		{
 			format++;
-			switch (*format){	
-			case 'c':{
-				i = print_char(args, i);
-				break;
-				 }
-			case 's':{
-				i = print_str(args, i);
-				break;
-				 }
-			case 'd':
-			case 'i':{
-				 i = print_int(args, i);
-				 break;
-				 }
-				 
-			default:
-				 _putchar(*format);
-				i++;
-				break;
+			switch (*format)
+			{
+				case 'c':
+						i = print_char(args, i);
+						break;
+				case 's':
+						i = print_str(args, i);
+						break;
+				case 'd':
+				case 'i':
+						i = print_int(args, i);
+						break;
+				default:
+						break;
 			}
 		}
 		format++;
