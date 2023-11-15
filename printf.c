@@ -30,18 +30,30 @@ int print_int(va_list args, int i)
 {
 	int num = va_arg(args, int);
 	int temp = num;
+	int count = 1;
 
 	if (num < 0)
 	{
 		_putchar('-');
 		i++;
-		temp = -num;
+		num = -num;
 	}
-	if (temp / 10 != 0)
-		i = print_int(args, i);
 
-	_putchar(temp % 10 + '0');
-	return (i + 1);
+	while (temp / 10 != 0)
+	{
+		temp /= 10;
+		count *= 10;
+	}
+	temp = num;
+
+	while ( count > 0)
+	{
+		_putchar(temp / count + '0');
+		i++;
+		temp %= count;
+		count /= 10;
+	}
+	return (i);
 }
 
 int _printf(const char *format, ...)
