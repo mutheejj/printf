@@ -23,7 +23,7 @@ while (*format)
 				 }
 			case 'd':{
 					 int d = va_arg(args, int);
-					 _putchar(d);
+					 print_num(d);
 					 i++;
 					 break;
 				 }
